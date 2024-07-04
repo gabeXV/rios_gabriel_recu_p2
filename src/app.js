@@ -36,6 +36,14 @@ app.put("/students/:id", (req,res) =>{
     res.json ({message: "Se actualizo el estudiante"})
 })
 
+app.delete("/students/:id", (req,res) =>{
+    const { id } = parseInt(req.params.id)
+    const getstudent = db.find((student) => student.id === id)
+    const indexstudent = db.indexOf(getstudent)
+    const delstudent = db.splice(indexstudent, 1)
+
+    res.json({message: "Se borro el estudiante con exito", delstudent})
+})
 
 
 

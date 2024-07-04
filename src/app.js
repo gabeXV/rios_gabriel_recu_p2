@@ -29,8 +29,8 @@ app.post("/students", (req,res) =>{
 app.put("/students/:id", (req,res) =>{
     const id = parseInt(req.params.id)
     const { fullName, age, curse } = req.body
-    const getstudent = db.find((student) => student.id === id )
-    getstudent.student = fullName, age, curse
+    const getstudent = db.find((fullName) => fullName.id === id )
+    getstudent.fullName = fullName, age, curse
 
     console.log (getstudent)
     res.json ({message: "Se actualizo el estudiante"})

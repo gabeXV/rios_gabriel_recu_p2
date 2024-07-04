@@ -20,10 +20,20 @@ res.json(getstudent)
 })
 app.post("/students", (req,res) =>{
     const id = new Date().getTime()
-    const {fullname, age, curse} = req.body
-    const newstudent = db.push({ id: id, fullname: fullname, age: age, curse: curse})
+    const {fullName, age, curse} = req.body
+    const newstudent = db.push({ id: id, fullName: fullName, age: age, curse: curse})
     console.log(newstudent)
     res.json ({message: "Se añadio un nuevo estudiante"})
+})
+
+app.put("/students/:id", (req,res) =>{
+    const id = parseInt(req.params.id)
+    const { fullName, age, curse } = req.body
+    const getstudent = db.find((student) => student.id === id )
+    getstudent.student = fullName, age, curse
+
+    console.log (getstudent)
+    res.json ({message: "Se actualizo el estudiante"})
 })
 
 
